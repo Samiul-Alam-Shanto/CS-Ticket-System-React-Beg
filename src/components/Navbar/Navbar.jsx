@@ -13,9 +13,13 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn m-1  bg-gradient-to-r from-[#632EE3] to-[#9F62F2] hover:bg-gradient-to-l from-[#632EE3] to-[#9F62F2]"
+              className="rounded-md px-1 m-1  bg-gradient-to-r from-[#632EE3] to-[#9F62F2] hover:bg-gradient-to-l from-[#632EE3] to-[#9F62F2]"
             >
-              Menu
+              <div className="flex flex-col justify-center items-center w-10 h-10 space-y-1.5 cursor-pointer group">
+                <span className="block h-0.5 w-6 bg-gray-800 rounded transition-all duration-300 group-hover:w-7 group-hover:bg-red-500"></span>
+                <span className="block h-0.5 w-6 bg-gray-800 rounded transition-all duration-300 group-hover:w-7 group-hover:bg-red-500"></span>
+                <span className="block h-0.5 w-6 bg-gray-800 rounded transition-all duration-300 group-hover:w-7 group-hover:bg-red-500"></span>
+              </div>
             </div>
             <ul
               tabIndex={0}

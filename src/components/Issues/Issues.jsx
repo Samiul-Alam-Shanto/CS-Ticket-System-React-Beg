@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import calender from "../../assets/calendar-line.png";
 import { toast } from "react-toastify";
 
 const Issues = ({ issue, inProgress, setInProgress }) => {
+  const [text, setText] = useState(issue.status);
+
   const handleCardClick = () => {
     toast("In Progress !!!");
 
     const cardData = [...inProgress, issue];
     setInProgress(cardData);
+    setText("In Progress");
   };
 
   return (
@@ -19,8 +22,14 @@ const Issues = ({ issue, inProgress, setInProgress }) => {
         <h3 className="font-semibold text-wrap xl:text-nowrap text-black">
           {issue.title}
         </h3>
-        <span className="rounded-2xl text-green-800 bg-green-300 px-2 text-nowrap">
-          &#9670; {issue.status}
+        <span
+          className={`rounded-2xl ${
+            text == "In Progress"
+              ? "text-amber-800 bg-amber-200"
+              : "text-green-800 bg-green-200"
+          } px-2 text-nowrap`}
+        >
+          &#9670; {text}
         </span>
       </div>
       <div>
@@ -29,7 +38,19 @@ const Issues = ({ issue, inProgress, setInProgress }) => {
       <div className="flex text-[12px] text-gray-600 justify-between items-center">
         <div className="flex justify-between gap-2">
           <span>#{issue.id}</span>
-          <p className="text-red-600">{issue.priority}</p>
+          <p
+            className={
+              issue.priority === "HIGH PRIORITY"
+                ? "text-red-700"
+                : issue.priority === "MEDIUM PRIORITY"
+                ? "text-amber-500"
+                : issue.priority === "LOW PRIORITY"
+                ? "text-green-600"
+                : ""
+            }
+          >
+            {issue.priority}
+          </p>
         </div>
         <div className="flex justify-between items-center">
           <p className="mr-3">{issue.customer}</p>
