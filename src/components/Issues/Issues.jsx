@@ -15,8 +15,10 @@ const Issues = ({ issue, inProgress, setInProgress }) => {
 
   return (
     <div
-      onClick={() => handleCardClick()}
-      className="flex flex-col p-6 gap-3 bg-white rounded-xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer shadow "
+      onClick={text == "Open" ? () => handleCardClick() : undefined}
+      className={`flex flex-col p-6 gap-3 bg-white rounded-xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg  shadow ${
+        text == "In Progress" ? "cursor-not-allowed" : "cursor-pointer"
+      }`}
     >
       <div className="flex justify-between items-center">
         <h3 className="font-semibold text-wrap xl:text-nowrap text-black">
